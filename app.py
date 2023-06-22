@@ -349,9 +349,9 @@ if __name__ == "__main__":
 
         **scribble_box**: Click on two points, the top-left point and the bottom-right point to represent a bounding box of the target instance.
 
-        **automatic**: Automaticly generate text prompt and the corresponding box input.
+        **automatic**: Automaticly generate text prompt and the corresponding box input with BLIP and Grounding-DINO.
         
-        In advanced options, we also support a hyper-paramter **hq_token_only**. False means use hq output to correct SAM output. True means use hq output only. Default: False.
+        We also support a hyper-paramter **hq_token_only**. False means use hq output to correct SAM output. True means use hq output only. Default: False.
         
         To achieve best visualization effect, for images contain multiple objects (like typical coco images), we suggest to set hq_token_only=False. For images contain single object, we suggest to set hq_token_only = True. 
         
@@ -365,6 +365,9 @@ if __name__ == "__main__":
                 task_type = gr.Dropdown(
                     ["text", "scribble_point", "scribble_box", "automatic"], value="text", label="task_type")
                 text_prompt = gr.Textbox(label="Text Prompt", placeholder="butterfly .")
+                hq_token_only = gr.Dropdown(
+                    [False, True], value=False, label="hq_token_only"
+                )
                 run_button = gr.Button(label="Run")
                 with gr.Accordion("Advanced options", open=False):
                     box_threshold = gr.Slider(
@@ -375,9 +378,6 @@ if __name__ == "__main__":
                     )
                     iou_threshold = gr.Slider(
                         label="IOU Threshold", minimum=0.0, maximum=1.0, value=0.8, step=0.001
-                    )
-                    hq_token_only = gr.Dropdown(
-                        [False, True], value=False, label="hq_token_only"
                     )
 
             with gr.Column():
