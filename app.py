@@ -363,7 +363,7 @@ if __name__ == "__main__":
                 input_image = gr.Image(
                     source='upload', type="pil", value="example4.png", tool="sketch",brush_radius=20)
                 task_type = gr.Dropdown(
-                    ["automatic", "scribble_point", "scribble_box", "text"], value="text", label="task_type")
+                    ["automatic", "scribble_point", "scribble_box", "text"], value="automatic", label="task_type")
                 text_prompt = gr.Textbox(label="Text Prompt", placeholder="butterfly .")
                 hq_token_only = gr.Dropdown(
                     [False, True], value=False, label="hq_token_only"
