@@ -343,13 +343,13 @@ if __name__ == "__main__":
         <details>
         You may select an example image or upload your image to start, we support 4 prompt types:
 
-        **text**: Send text prompt to identify the target instance in the `Text prompt` box.
+        **automatic**: Automaticly generate text prompt and the corresponding box input with BLIP and Grounding-DINO.
 
         **scribble_point**: Click an point on the target instance.
 
         **scribble_box**: Click on two points, the top-left point and the bottom-right point to represent a bounding box of the target instance.
 
-        **automatic**: Automaticly generate text prompt and the corresponding box input with BLIP and Grounding-DINO.
+        **text**: Send text prompt to identify the target instance in the `Text prompt` box.
         
         We also support a hyper-paramter **hq_token_only**. False means use hq output to correct SAM output. True means use hq output only. Default: False.
         
@@ -361,9 +361,9 @@ if __name__ == "__main__":
         with gr.Row():
             with gr.Column():
                 input_image = gr.Image(
-                    source='upload', type="pil", value="example1.png", tool="sketch",brush_radius=20)
+                    source='upload', type="pil", value="example4.png", tool="sketch",brush_radius=20)
                 task_type = gr.Dropdown(
-                    ["text", "scribble_point", "scribble_box", "automatic"], value="text", label="task_type")
+                    ["automatic", "scribble_point", "scribble_box", "text"], value="text", label="task_type")
                 text_prompt = gr.Textbox(label="Text Prompt", placeholder="butterfly .")
                 hq_token_only = gr.Dropdown(
                     [False, True], value=False, label="hq_token_only"
