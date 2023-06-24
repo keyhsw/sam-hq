@@ -364,7 +364,7 @@ if __name__ == "__main__":
                     source='upload', type="pil", value="example4.png", tool="sketch",brush_radius=20)
                 task_type = gr.Dropdown(
                     ["automatic", "scribble_point", "scribble_box", "text"], value="automatic", label="task_type")
-                text_prompt = gr.Textbox(label="Text Prompt", placeholder="chair .")
+                text_prompt = gr.Textbox(label="Text Prompt", placeholder="bench .")
                 hq_token_only = gr.Dropdown(
                     [False, True], value=False, label="hq_token_only"
                 )
